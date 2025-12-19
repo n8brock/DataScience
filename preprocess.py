@@ -4,13 +4,13 @@ from config import *
 import pandas as pd
 import datetime as dt
 import sys
-sys.path.append(r'C:\Users\nbrock.HAYDEN-HOMES\Hayden Homes\Back Office - Database\ETL Script')
+# cusotm connector script
 import SnowflakeConnect as connect
 
 
 def clean(min_date, min_sales):
     # --------------- target
-    df = pd.read_csv(r'JobCostSummary.csv', encoding_errors='ignore')
+    df = pd.read_csv(r'SalesData.csv', encoding_errors='ignore')
     # status filters
     df = df[df['Status'] != 'Cancelled']
     df = df[df['Type'].str.contains('Residential|Regular', na=False)]
@@ -58,11 +58,11 @@ def clean(min_date, min_sales):
     f = pd.read_csv(r'hhpresence.csv')
     f.columns = ['state', 'county', 'city', 'hhpresence']
     df = pd.merge(df, f, on=['city', 'county', 'state'], how='left')
-    # if not in HHPresence Table, no HH presence
-    df['hhpresence'] = df['hhpresence'].fillna(0)
+    # if not in builderfootprint Table, no builder footprint
+    df['hhpresence'] = df['builderfootprint'].fillna(0)
 
     # bend - capture market competition history/reputation
-    df['bend'] = (df['city'].str.lower() == 'bend').astype(int)
+    df['homecity'] = (df['city'].str.lower() == 'CITY').astype(int)
 
     # --------------- DROP NULL & DUPES
     before = len(df.index)
@@ -96,7 +96,8 @@ def read(enriched=False):
 def enrich(base_data):
     start = time.time()
     print('processing data enrichment...')
-
+    
+    # run once to store data in a csv
     # conn = connect.connect()
     # with open('enrich.sql') as f:
     #     q = f.read()
@@ -128,8 +129,10 @@ def enrich(base_data):
 
 
 if __name__ == '__main__':
+    # run to process clean and storage again.
     # df = clean(MINDATE, MINSALES)
     # print(df.head(n=50).to_string())
-
     # print(enrich(read()).head(10))
+
+    # run to read stored csv
     print(read())
