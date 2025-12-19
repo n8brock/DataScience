@@ -1,4 +1,5 @@
-# STEP 1 - LinearRegression
+''' Classical Statistical Method - LinearRegresson '''
+''' utilize domain knowledge of the housing market, apply data, resolve colinearity, and test errors '''
 import config
 from config import *
 import featureplots
@@ -81,3 +82,4 @@ def train_model(X, y, validate=True):
 # ---------- TEST
 model, X, y = train_model(X_test, y_test, validate=False)
 final_exam(MODEL_NAME, model, X, y)
+
