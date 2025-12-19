@@ -1,3 +1,5 @@
+''' storing final columns for RandomForestRegressor - all of these positively support better target predictions '''
+
 final_cols = [
             'apparelmensbigtall_False',
             'businessowner_Builder',
@@ -164,4 +166,5 @@ final_cols = [
             'diyliving_True',
             'discretionaryincomerange_$30,000 to $49,999',
             'apparelchildrens_True'
+
 ]
