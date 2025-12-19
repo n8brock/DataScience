@@ -1,3 +1,5 @@
+''' storing functions and variables used by multiple models '''
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, r2_score
 import numpy as np
@@ -15,6 +17,7 @@ TEST_SIZE = 0.15
 
 
 def split_data(data, view=False):
+    ''' run with same random state before andy transformations to ensure that test data is separated from training data - avoid overfitting '''
     # df = df.drop(columns=BASE_COLS)
     X = data.drop(columns=TARGET_COL)
     y = data[TARGET_COL]
@@ -25,6 +28,7 @@ def split_data(data, view=False):
 
 
 def final_exam(model_name, model, X_test, y_test):
+    ''' run only once! this is the test to prove produciton-ready '''
     print('-----------------------------------')
     print(model_name, 'FINAL EXAM')
     model.fit(X_test, y_test)
@@ -50,3 +54,4 @@ def final_exam(model_name, model, X_test, y_test):
              fontsize=12, verticalalignment='top', bbox=dict(facecolor='black', alpha=0.5, boxstyle='round,pad=0.5'))
     plt.show()
     print('-----------------------------------')
+
