@@ -1,4 +1,5 @@
-# STEP 2 - RandomForestClassifier predict high-performing areas
+''' Modern Machine Learning Approach - RandomForestRegressor '''
+''' build model, perform permutaiton importance to determine otpimal feature selection through process of elimination, tune and retrain  model on final feature selection, test '''
 import time
 from randomforestcols import final_cols
 import preprocess
@@ -28,6 +29,7 @@ def train_model(X, y, validate=True):
     # print(f'Validation (OOB) {model.oob_score_:.4f}')
 
     # ---------- FEATURE SELECTION - PERMUTATION IMPORTANCE
+    # process of elimination - eliminate negatively correlated features, refit, repeat... until all features contribute positively to prediciton outcomes
     if validate:
         while True:
             print('processing permutation importance...')
@@ -63,4 +65,5 @@ def train_model(X, y, validate=True):
 # ---------- TEST
 model, X, y = train_model(X_test, y_test, validate=False)
 final_exam(MODEL_NAME, model, X, y)
+
 
