@@ -1,4 +1,6 @@
--- August 2022 to August 2025
+-- complex CTE-style SQL query to access data stored in a Snowflake Data Lakehouse
+-- Constellation1 Data Labs API, Zillow, Construciton Monitor Permits API
+
 with
 geocity as(
     select
@@ -124,4 +126,5 @@ select * from geocity
 left join assessor using(geoid)
 left join permits1 using(geoid)
 left join zillow using(geoid)
+
 left join demo using(geoid)
