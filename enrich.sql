@@ -1,3 +1,7 @@
+-- complex CTE-style SQL query to access data stored in a Snowflake Data Lakehouse
+-- Constellation1 Data Labs API
+
+
 with
 geocity as(
     select
@@ -303,4 +307,5 @@ where g.geoid in(
 )
 
 select * from geocity g
+
 left join hhdemo using(geoid)
