@@ -1,3 +1,5 @@
+''' functions for plotting features against target as a part of investigative analysis in early phases of project '''
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score, mean_absolute_error
@@ -6,6 +8,7 @@ import preprocess
 
 
 def old_plot(flabel, feature, tlabel, target, line=True):
+    ''' "OLD" is simply a feature vs target plot with a trend line fitted '''
     plt.scatter(feature, target, color='blue', label='Data Points')
     if line:
         # Fit a linear regression line
@@ -23,6 +26,7 @@ def old_plot(flabel, feature, tlabel, target, line=True):
 
 
 def stats_plot(flabel, feature, tlabel, target):
+    ''' "STATS" includes metrics useful for determining relationship viability of features '''
 
     fig, ax = plt.subplots()
 
@@ -59,4 +63,5 @@ def stats_plot(flabel, feature, tlabel, target):
     plt.subplots_adjust(bottom=0.15)
 
     plt.show()
+
 
