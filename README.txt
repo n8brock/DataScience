@@ -8,7 +8,7 @@ SQL DATA WRANGLING
 	
 PYTHON DATA SCIENCE ANALYTICS
 
-Linear Regression
+LinearRegression
 	Classical Statistics
 	Transparent, interpretable, visible components
 	Use case - understanding interworkings of a business questions
@@ -18,4 +18,8 @@ RandomForestRegressor
 	Modern Machine Learning
 	Understandable and explainable, but a bit more "black box" on what choices were made by the algorithm and why
 	Use Case - incredible accurate and effective prediction outcomes
+
 	e.g. fixing a new car; tuning and reprogramming internal computers goes a longer way than looking in detail under the hood
+
+BI VISUALIZATION
+PowerBI and Tableau can be utilized to create online, refreshable dashboards to deliver information in a timely and effective manner.
